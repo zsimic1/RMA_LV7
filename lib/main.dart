@@ -19,6 +19,19 @@ class _ListsState extends State<Lists> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Item list'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.add,
+              color: Colors.white,
+            ),
+            onPressed: () async {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => newItem()));
+              setState(() {});
+            },
+          )
+        ],
         centerTitle: true,
         elevation: 0,
       ),
@@ -147,14 +160,6 @@ class _ListsState extends State<Lists> {
             );
 
           }),
-      floatingActionButton: FloatingActionButton(
-        child: Text('New'),
-        onPressed: () async {
-          final value = await Navigator.push(
-              context, MaterialPageRoute(builder: (context) => newItem()));
-          setState(() {});
-        },
-      ),
     );
   }
 }
